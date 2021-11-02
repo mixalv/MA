@@ -42,9 +42,5 @@ hash = {
  :key  => :value_2,
   Key:    :value_3
 }
-counter = 0
-hash.each do |k, v|
-    counter += 1 if k.to_s.downcase == 'key'        
-end
-p counter
+p hash.keys.count { |k| k.to_s.downcase == 'key' }
 
