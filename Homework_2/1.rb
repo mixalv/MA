@@ -16,6 +16,6 @@ sound = {
     Корова: 'му',
     Качка: 'кря'
 }
-
+puts 'Введіть назву тварини:'
 animal = gets.chomp.capitalize.to_sym
 puts sound[animal] ? "#{animal} говорить - #{sound[animal]}" : "Вибачте, така тварина відсутня у списку"
