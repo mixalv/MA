@@ -8,7 +8,18 @@
 # - змінити реалізацію цього методу так, щоб у випадку, коли блок не був переданий в цей метод, замість
 # стандартного еррору виводити в консоль - "будьласка додайте блок".
 # - змінити цей метод, так, щоб результат кожної ітераці перемножався на 2, якщо цим результатом є інтеджер.
-
+=begin
+=======Original method
+def arr.my_own_map
+  collection_counter = 0
+  result = []
+  until collection_counter == size
+    result << yield(self[collection_counter])
+    collection_counter += 1
+  end
+  result
+end    
+=end
 arr = %w[a b c d] #це "рубішна" скорочена форма запису ось цього - ['a', 'b', 'c', 'd']
 
 def arr.my_own_map
