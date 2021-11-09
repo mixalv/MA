@@ -14,8 +14,8 @@
 # Cherkassy, Lviv, Paris, Tokyo, Toronto, New York, Texas, Indiana
 
 puts 'Введіть улюблені міста:'
-fav_towns = gets.chomp.split(',').map { |i| i.strip.capitalize }.sort
+fav_towns = gets.chomp.split(',').map { |i| i.strip.gsub(/\S+/, &:capitalize) }.sort
 puts 'Введіть найненавистніші Вами міста:'
-hate_towns = gets.chomp.split(',').map { |i| i.strip.capitalize }.sort
+hate_towns = gets.chomp.split(',').map { |i| i.strip.gsub(/\S+/, &:capitalize) }.sort
 puts 'Результат виконання:'
 puts fav_towns.concat(hate_towns).join(', ')
