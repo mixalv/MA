@@ -16,7 +16,7 @@
 loop do
     puts 'Введіть число:'
     num = gets.chomp.to_i
-    unless num.abs.digits.count > 1
+    unless num.abs.digits.count(1) > 1
         p num * 256
     else
         puts 'Умови недотримані, зупиняю виконання програми.'
