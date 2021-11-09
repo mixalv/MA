@@ -11,11 +11,11 @@
 # Супер_ведмідь говорить - ведмежачий звук           |   Супер_ведмідь говорить - ведмежачий звук
 
 sound = {
-    Кіт: 'мяу',
-    Собака: 'гав',
-    Корова: 'му',
-    Качка: 'кря'
+    cat: 'meow',
+    dog: 'woof',
+    cow: 'moo',
+    duck: 'quack'
 }
-puts 'Введіть назву тварини:'
-animal = gets.chomp.capitalize.to_sym
-puts sound[animal] ? "#{animal} говорить - #{sound[animal]}" : "Вибачте, така тварина відсутня у списку"
+puts 'Enter animal name:'
+animal_name = gets.chomp.downcase.to_sym
+puts sound[animal_name].nil? ? "Sorry, the animal doesn't exist" : "#{animal_name.capitalize} says - #{sound[animal_name]}"
