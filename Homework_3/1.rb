@@ -31,7 +31,7 @@ class User
   end
   
   def valid?
-    errors.count > 0 ? false : true
+    errors.empty? ? true : false
   end
 
 end
