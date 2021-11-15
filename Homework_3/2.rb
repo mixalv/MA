@@ -1,8 +1,10 @@
 # 1)
 class Brackets
+  
   def initialize(string)
     @string = string
   end
+  
   def valid?
     stack = []
     open_parentheses = ['{', '[', '(', '<']
@@ -29,9 +31,11 @@ class Brackets
     end
     return stack.empty? ? true : false
   end
+
 end
 # 2)
 class String
+  
   def valid?
     stack = []
     open_parentheses = ['{', '[', '(', '<']
@@ -58,5 +62,6 @@ class String
     end
     return stack.empty? ? true : false
   end
+
 end
 
