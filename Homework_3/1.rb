@@ -6,6 +6,7 @@ class User
     @first_name = kwargs[:first_name]
     @last_name = kwargs[:last_name]
     @email = kwargs[:email]
+    @errors = []
   end
   
   def full_name
@@ -17,21 +18,47 @@ class User
   end
   
   def errors
-    errors_array = []
-    errors_array.push('email is invalid') if !is_valid_email?
-    errors_array.push('email must be a string') if !@email.is_a? String
-    errors_array.push('email can not be empty') if @email.nil? || @email.to_s.empty?
-    errors_array.push('first name can not be empty') if @first_name.nil? || @first_name.to_s.empty?
-    errors_array.push('fist name must be a string') if !@first_name.is_a? String
-    errors_array.push('first_name must be at least three characters') if first_name.to_s.length < 3
-    errors_array.push('last name can not be empty') if @last_name.nil? || @first_name.to_s.empty?
-    errors_array.push('last name must be a string') if !@last_name.is_a? String
-    errors_array.push('last name must be at least three characters') if @last_name.to_s.length < 3
-    errors_array
+    @errors.clear
+    add_first_name_errors
+    add_last_name_errors
+    add_email_errors
+    @errors
   end
   
   def valid?
     errors.empty? ? true : false
+  end
+
+  private
+
+  def empty_field?(field)
+    field.nil? || field.to_s.empty? ? true : false 
+  end
+
+  def not_string?(field)
+    field.is_a?(String) ? false : true
+  end
+
+  def less_than_3_char?(field)
+    field.to_s.length < 3 ? true : false
+  end 
+
+  def add_first_name_errors
+    @errors.push('first name can not be empty') if empty_field?(@first_name)
+    @errors.push('fist name must be a string') if not_string?(@first_name)
+    @errors.push('first_name must be at least three characters') if less_than_3_char?(@first_name)
+  end
+
+  def add_last_name_errors
+    @errors.push('last name can not be empty') if empty_field?(@last_name)
+    @errors.push('last name must be a string') if not_string?(@last_name)
+    @errors.push('last name must be at least three characters') if less_than_3_char?(@last_name)
+  end
+
+  def add_email_errors
+    @errors.push('email is invalid') if !is_valid_email?
+    @errors.push('email must be a string') if not_string?(@email)
+    @errors.push('email can not be empty') if less_than_3_char?(@email)
   end
 
 end
