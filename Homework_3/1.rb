@@ -1,16 +1,21 @@
 class User
+  
   attr_accessor :first_name, :last_name, :email
+  
   def initialize(**kwargs)
     @first_name = kwargs[:first_name]
     @last_name = kwargs[:last_name]
     @email = kwargs[:email]
   end
+  
   def full_name
     "#{@first_name} #{@last_name}"
   end
+  
   def is_valid_email?
     @email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i ? true : false
   end
+  
   def errors
     errors_array = []
     errors_array.push('email is invalid') if !is_valid_email?
@@ -24,7 +29,9 @@ class User
     errors_array.push('last name must be at least three characters') if @last_name.to_s.length < 3
     errors_array
   end
+  
   def valid?
     errors.count > 0 ? false : true
   end
+
 end
