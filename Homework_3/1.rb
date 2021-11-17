@@ -26,21 +26,21 @@ class User
   end
   
   def valid?
-    errors.empty? ? true : false
+    errors.empty?
   end
 
   private
 
   def empty_field?(field)
-    field.nil? || field.to_s.empty? ? true : false 
+    field.nil? || field.to_s.empty?
   end
 
   def not_string?(field)
-    field.is_a?(String) ? false : true
+    !field.is_a?(String)
   end
 
   def less_than_3_char?(field)
-    field.to_s.length < 3 ? true : false
+    field.to_s.length < 3
   end 
 
   def add_first_name_errors

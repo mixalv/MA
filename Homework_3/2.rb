@@ -29,7 +29,7 @@ class Brackets
         end  
       end      
     end
-    return stack.empty? ? true : false
+    return stack.empty?
   end
 
 end
@@ -60,7 +60,7 @@ class String
         end  
       end      
     end
-    return stack.empty? ? true : false
+    return stack.empty?
   end
 
 end
