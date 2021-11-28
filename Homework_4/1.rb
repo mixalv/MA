@@ -19,7 +19,7 @@ class BricksFactory
 
   # returns a sorted array of unbroken bricks (sorting by color)
   def bricks_sorted_by_color
-    unbroken_bricks.sort_by(&:color)
+    unbroken_bricks.sort
   end
 
   # returns the last 10 created unbroken bricks of the requested color.
@@ -49,12 +49,18 @@ end
 
 class Brick
 
+  include Comparable
   attr_accessor :color, :serial_number, :state
 
   def initialize(color, serial_number, state)
     @color = color
     @serial_number = serial_number
     @state = state
+  end
+
+  # logic where each brick will know which field it should be sorted by
+  def <=>(other)
+    color <=> other.color
   end
 
 end
