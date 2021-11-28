@@ -23,9 +23,9 @@ class BricksFactory
   end
 
   # returns the last 10 created unbroken bricks of the requested color.
-  def last_ten_bricks_with_color(color)
+  def last_ten_bricks_with_color(number = 10, color)
     result = bricks_sorted_by_color.find_all { |elem| elem.color == color}
-    result.count >= 10 ? result.last(10) : 'There is no ten blocks of such color'
+    result.count >= number ? result.last(number) : "There is no #{number} blocks of such color"
   end
 
   private
