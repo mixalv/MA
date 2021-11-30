@@ -1,16 +1,3 @@
-#Task 2
-#
-# In addition to the previous assignment,
-# create a module that describes a method with the ability to sort the array by any requested field.
-# If the iterated element of the array does not contain the requested field, then:
-# - display an appropriate message on the console.
-# - place this element in a special array of failed elements.
-# - remove this element from the array that we are currently sorting.
-# The method should output an array of failed elements to the console and return only the sorted array.
-#
-# Name of this method should be different from the sort method of the BricksFactory class.
-# Override the sort method that was written for BricksFactory. (You can use the keyword "alias" in this task.)
-
 module Sorting
   def sort_by_field(array, field)
     failed_elements = array.map do |element|
@@ -26,6 +13,7 @@ module Sorting
   alias sort_bricks_by_field sort_by_field
 end
 
+# to ease checking of this task added clases from task 1 to this file
 class BricksFactory
 
   prepend Sorting
