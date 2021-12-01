@@ -1,10 +1,3 @@
-#Task 3**
-#
-# You need to create a module with your own implementation of attr_accessor (without using "super" keyword).
-# Your own accessor should output "this field is empty" if the requested field has no value.
-# Create any class that will have multiple fields (4-6),
-# and make that class use the overridden attr_accessor method that was previously described in your module.
-
 module CustomAccessor
   
   def attr_accessor(*args)
