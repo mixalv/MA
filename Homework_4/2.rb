@@ -1,14 +1,14 @@
 module Sorting
   def sort_by_field(array, field)
     failed_elements = array.map do |element|
-      if !element.respond_to?(field)
-        puts 'The element doesn\'t have the requested field' 
-        element 
-      end     
+      unless element.respond_to?(field)
+        puts 'The element doesn\'t have the requested field'
+        element
+      end
     end
     array -= failed_elements
     p failed_elements.compact!
-    array.sort_by { |element| element.send(field) } unless array.empty?
+    array.sort_by { |element| element.send(field) }
   end
   alias sort_bricks_by_field sort_by_field
 end
@@ -52,7 +52,7 @@ class BricksFactory
   def sort_bricks_by_field(array, field)
     array.sort_by { |element| element.send(field) }
   end
-  
+
   def generate_serial_number
     total_number_of_unbroken_bricks + 1
   end
