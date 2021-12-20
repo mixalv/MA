@@ -1,6 +1,6 @@
 class BricksFactory
   NUMBER_OF_BRICKS = 10
-  COLORS = %i[:red :green :blue :white :brown]
+  COLORS = %i[red green blue white brown]
   def initialize
     @unbroken_bricks = []
   end
