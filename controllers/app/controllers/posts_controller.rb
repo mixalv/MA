@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   before_action :check_user, only: %i[update delete]
+  before_action :check_same_user, only: [:get_by]
   
   def create
-    post = Post.create(post_params)
+    post = Post.create!(post_params)
     render json: { id: post.id }
   end
 
@@ -17,8 +18,12 @@ class PostsController < ApplicationController
   end
 
   def get_by
-    posts = Post.where(filter_params)
+    posts = Post.where(filter_params).where.not(user_id: params[:id])
     render json: posts
+  end
+
+  def ordered_by_date
+    render json: Post.order(created_at: :desc).where.not(user_id: params[:user_id])
   end
 
   private
@@ -33,7 +38,11 @@ class PostsController < ApplicationController
   end
 
   def filter_params
-    params.permit(:category, :created_at, :user_id)
+    params.permit(:category, :user_id)
+  end
+
+  def check_same_user
+    render status: 400, json: { message: "This endpoint is for other users posts" } if params[:id] == params[:user_id]
   end
 
 end
