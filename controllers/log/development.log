@@ -1331,3 +1331,102 @@ Processing by CommentsController#create as */*
 Completed 200 OK in 528ms (Views: 0.6ms | ActiveRecord: 34.0ms | Allocations: 37246)
 
 
+Started POST "/user/1/post" for 127.0.0.1 at 2022-02-07 11:26:52 +0200
+  [1m[35m (12.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#create as */*
+  Parameters: {"content"=>"some new post5", "category"=>"new category", "user_id"=>"1", "post"=>{"content"=>"some new post5", "category"=>"new category"}}
+[31mUnpermitted parameter: :post. Context: { controller: PostsController, action: create, request: #<ActionDispatch::Request:0x00007f0030da9698>, params: {"content"=>"some new post5", "category"=>"new category", "controller"=>"posts", "action"=>"create", "user_id"=>"1", "post"=>{"content"=>"some new post5", "category"=>"new category"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `create'
+  [1m[36mPost Create (3.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "category", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "some new post5"], ["category", "NEW CATEGORY"], ["user_id", 1], ["created_at", "2022-02-07 09:26:54.046428"], ["updated_at", "2022-02-07 09:26:54.046428"]]
+  ↳ app/controllers/posts_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (39.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `create'
+Completed 200 OK in 445ms (Views: 0.3ms | ActiveRecord: 43.9ms | Allocations: 30766)
+
+
+Started GET "/user/1/posts" for 127.0.0.1 at 2022-02-07 11:27:03 +0200
+Processing by PostsController#get_by as */*
+  Parameters: {"id"=>"1"}
+[31mUnpermitted parameter: :id. Context: { controller: PostsController, action: get_by, request: #<ActionDispatch::Request:0x00007f0024783810>, params: {"controller"=>"posts", "action"=>"get_by", "id"=>"1"} }[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" != ?[0m  [["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:22:in `get_by'
+Completed 200 OK in 26ms (Views: 10.0ms | ActiveRecord: 0.2ms | Allocations: 1138)
+
+
+Started GET "/user/2/posts" for 127.0.0.1 at 2022-02-07 11:27:10 +0200
+Processing by PostsController#get_by as */*
+  Parameters: {"id"=>"2"}
+[31mUnpermitted parameter: :id. Context: { controller: PostsController, action: get_by, request: #<ActionDispatch::Request:0x00007f003108cb80>, params: {"controller"=>"posts", "action"=>"get_by", "id"=>"2"} }[0m
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" != ?[0m  [["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:22:in `get_by'
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.1ms | Allocations: 1036)
+
+
+Started POST "/user/1/post" for 127.0.0.1 at 2022-02-07 11:32:31 +0200
+  [1m[35m (27.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (undefined local variable or method `i' for PostsController:Class):
+  
+app/controllers/posts_controller.rb:4:in `<class:PostsController>'
+app/controllers/posts_controller.rb:1:in `<main>'
+Started POST "/user/1/post" for 127.0.0.1 at 2022-02-07 11:33:14 +0200
+  [1m[35m (19.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#create as */*
+  Parameters: {"content"=>"some new post5", "category"=>"new category", "user_id"=>"1", "post"=>{"content"=>"some new post5", "category"=>"new category"}}
+[31mUnpermitted parameter: :post. Context: { controller: PostsController, action: create, request: #<ActionDispatch::Request:0x00007eff8cdcd498>, params: {"content"=>"some new post5", "category"=>"new category", "controller"=>"posts", "action"=>"create", "user_id"=>"1", "post"=>{"content"=>"some new post5", "category"=>"new category"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:7:in `create'
+  [1m[36mPost Create (13.5ms)[0m  [1m[32mINSERT INTO "posts" ("content", "category", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "some new post5"], ["category", "NEW CATEGORY"], ["user_id", 1], ["created_at", "2022-02-07 09:33:16.435649"], ["updated_at", "2022-02-07 09:33:16.435649"]]
+  ↳ app/controllers/posts_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (73.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:7:in `create'
+Completed 200 OK in 468ms (Views: 0.3ms | ActiveRecord: 89.0ms | Allocations: 30779)
+
+
+Started GET "/user/2/posts" for 127.0.0.1 at 2022-02-07 11:33:34 +0200
+Processing by PostsController#get_by as */*
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 584)
+
+
+  
+NoMethodError (undefined method `upcase' for nil:NilClass):
+  
+app/controllers/posts_controller.rb:50:in `upcase_category'
+Started GET "/user/2/posts?category=SOme%20category" for 127.0.0.1 at 2022-02-07 11:33:49 +0200
+Processing by PostsController#get_by as */*
+  Parameters: {"category"=>"SOme category", "id"=>"2"}
+[31mUnpermitted parameter: :id. Context: { controller: PostsController, action: get_by, request: #<ActionDispatch::Request:0x00007eff8c5b4ae0>, params: {"category"=>"SOme category", "controller"=>"posts", "action"=>"get_by", "id"=>"2"} }[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."category" = ? AND "posts"."user_id" != ?[0m  [["category", "SOME CATEGORY"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:23:in `get_by'
+Completed 200 OK in 92ms (Views: 65.2ms | ActiveRecord: 0.4ms | Allocations: 1040)
+
+
+Started GET "/user/2/posts?category=SOme%20category" for 127.0.0.1 at 2022-02-07 11:34:30 +0200
+  [1m[35m (29.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#get_by as */*
+  Parameters: {"category"=>"SOme category", "id"=>"2"}
+[31mUnpermitted parameter: :id. Context: { controller: PostsController, action: get_by, request: #<ActionDispatch::Request:0x00007f9fa8546970>, params: {"category"=>"SOme category", "controller"=>"posts", "action"=>"get_by", "id"=>"2"} }[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."category" = ? AND "posts"."user_id" != ?[0m  [["category", "SOME CATEGORY"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:23:in `get_by'
+Completed 200 OK in 260ms (Views: 42.0ms | ActiveRecord: 0.5ms | Allocations: 18874)
+
+
+Started GET "/user/2/posts?category=new%20category" for 127.0.0.1 at 2022-02-07 11:34:45 +0200
+Processing by PostsController#get_by as */*
+  Parameters: {"category"=>"new category", "id"=>"2"}
+[31mUnpermitted parameter: :id. Context: { controller: PostsController, action: get_by, request: #<ActionDispatch::Request:0x00007f9fa8d92e08>, params: {"category"=>"new category", "controller"=>"posts", "action"=>"get_by", "id"=>"2"} }[0m
+  [1m[36mPost Load (42.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."category" = ? AND "posts"."user_id" != ?[0m  [["category", "NEW CATEGORY"], ["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:23:in `get_by'
+Completed 200 OK in 276ms (Views: 211.0ms | ActiveRecord: 43.0ms | Allocations: 5349)
+
+

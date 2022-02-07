@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :check_user, only: %i[update delete]
   before_action :check_same_user, only: [:get_by]
+  before_action :upcase_category, except: %i[delete ordered_by_date]
   
   def create
     post = Post.create!(post_params)
@@ -43,6 +44,10 @@ class PostsController < ApplicationController
 
   def check_same_user
     render status: 400, json: { message: "This endpoint is for other users posts" } if params[:id] == params[:user_id]
+  end
+
+  def upcase_category
+    params[:category] = params[:category].upcase unless params[:category].nil?
   end
 
 end
